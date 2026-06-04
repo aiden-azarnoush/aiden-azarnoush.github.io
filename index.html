@@ -9,64 +9,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0d11;
-    --bg-2:#10141a;
-    --panel:#141921;
-    --panel-2:#171d27;
-    --ink:#eef2f7;
-    --ink-soft:#aeb8c6;
-    --ink-faint:#6b7585;
-    --line:#232c3a;
-    --hot:#ff7a3c;
-    --hot-2:#ffb24a;
-    --cold:#34c8 e6;
-    --cold:#34c8e6;
-    --cool:#5b8bff;
+    --bg:#0b0d11;--bg-2:#10141a;--panel:#141921;--panel-2:#171d27;
+    --ink:#eef2f7;--ink-soft:#aeb8c6;--ink-faint:#6b7585;--line:#232c3a;
+    --hot:#ff7a3c;--hot-2:#ffb24a;--cold:#34c8e6;--cool:#5b8bff;
     --grad:linear-gradient(90deg,#5b8bff 0%,#34c8e6 28%,#7be0a4 50%,#ffb24a 74%,#ff7a3c 100%);
-    --mono:"IBM Plex Mono",monospace;
-    --sans:"IBM Plex Sans",sans-serif;
-    --disp:"Sora",sans-serif;
+    --mono:"IBM Plex Mono",monospace;--sans:"IBM Plex Sans",sans-serif;--disp:"Sora",sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-weight:300;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  /* blueprint grid bg */
-  body::before{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background-image:
-      linear-gradient(var(--line) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:46px 46px;
-    opacity:.18;
-    mask-image:radial-gradient(ellipse 120% 80% at 50% 0%,#000 35%,transparent 80%);
-  }
-  body::after{
-    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(900px 500px at 78% -8%,rgba(255,122,60,.10),transparent 60%),
-               radial-gradient(800px 500px at 10% 8%,rgba(91,139,255,.10),transparent 60%);
-  }
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;opacity:.18;mask-image:radial-gradient(ellipse 120% 80% at 50% 0%,#000 35%,transparent 80%)}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(900px 500px at 78% -8%,rgba(255,122,60,.10),transparent 60%),radial-gradient(800px 500px at 10% 8%,rgba(91,139,255,.10),transparent 60%)}
   .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 28px}
-
-  /* thermal scale strip */
   .scale{height:6px;width:100%;background:var(--grad);border-radius:6px}
-  .thermal-band{margin:44px 0 4px;opacity:.8}
-  .thermal-band svg{display:block}
+  .thermal-band{margin:44px 0 4px;opacity:.8}.thermal-band svg{display:block}
 
-  /* HERO */
   header{padding:72px 0 30px}
   .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:22px;display:flex;align-items:center;gap:14px}
   .eyebrow .scale{height:3px;width:54px;flex:none}
   h1{font-family:var(--disp);font-weight:800;font-size:clamp(42px,7.4vw,84px);line-height:.96;letter-spacing:-.02em}
   h1 .lo{color:var(--ink-faint);font-weight:600}
-  .role{font-family:var(--disp);font-weight:500;font-size:clamp(17px,2.4vw,23px);color:var(--hot-2);margin-top:18px;letter-spacing:.01em}
+  .role{font-family:var(--disp);font-weight:500;font-size:clamp(17px,2.4vw,23px);color:var(--hot-2);margin-top:18px}
   .lede{max-width:640px;color:var(--ink-soft);font-size:16.5px;margin-top:22px}
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
   .chip{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);border:1px solid var(--line);background:var(--panel);padding:8px 13px;border-radius:999px;transition:.25s}
@@ -74,36 +37,29 @@
   .chip:hover{border-color:var(--hot);color:var(--ink)}
   .chip.badge{border-color:rgba(123,224,164,.4);color:#9ff0c0;background:rgba(123,224,164,.06)}
 
-  /* STATS */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:46px 0 8px}
-  .stat{background:var(--panel);padding:22px 20px}
-  .stat .n{font-family:var(--disp);font-weight:700;font-size:30px;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-top:9px;line-height:1.5}
-
-  /* SECTION */
   section{padding:54px 0}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
   .sec-num{font-family:var(--mono);font-size:13px;color:var(--hot);letter-spacing:.1em}
   .sec-title{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.6vw,34px);letter-spacing:-.01em}
   .sec-rule{flex:1;height:1px;background:var(--line);align-self:center}
 
-  /* PROJECTS */
-  .proj{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:16px;padding:28px 28px 26px;margin-bottom:22px;position:relative;overflow:hidden;transition:.3s}
-  .proj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad);opacity:.55;transition:.3s}
+  .company{margin:30px 0 16px;padding-bottom:11px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px}
+  .company:first-of-type{margin-top:4px}
+  .cname{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.01em}
+  .crole{font-family:var(--mono);font-size:12px;color:var(--hot-2);margin-top:6px;letter-spacing:.03em}
+  .cmeta{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);white-space:nowrap}
+
+  .proj{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel-2));border-radius:14px;padding:24px 26px;margin-bottom:16px;position:relative;overflow:hidden;transition:.3s}
+  .proj::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad);opacity:.5;transition:.3s}
   .proj:hover{border-color:#33405a;transform:translateY(-3px)}
   .proj:hover::before{opacity:1;width:5px}
-  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}
-  .proj h3{font-family:var(--disp);font-weight:600;font-size:21px;letter-spacing:-.01em;line-height:1.25}
-  .proj .org{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-top:7px;letter-spacing:.04em}
-  .pid{font-family:var(--mono);font-size:12px;color:var(--hot);border:1px solid var(--line);border-radius:8px;padding:5px 9px;white-space:nowrap}
-  .proj p{color:var(--ink-soft);font-size:15px;margin-top:15px;max-width:760px}
-  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:17px}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .proj h3{font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.25}
+  .pid{font-family:var(--mono);font-size:11.5px;color:var(--hot);border:1px solid var(--line);border-radius:8px;padding:5px 9px;white-space:nowrap}
+  .proj p{color:var(--ink-soft);font-size:14.5px;margin-top:13px;max-width:780px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
   .tag{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);background:var(--bg-2);border:1px solid var(--line);padding:5px 10px;border-radius:6px}
-  .result{display:inline-flex;align-items:center;gap:9px;margin-top:18px;font-family:var(--mono);font-size:13px;color:#9ff0c0}
-  .result .dot{width:7px;height:7px;border-radius:50%;background:#7be0a4;box-shadow:0 0 10px #7be0a4}
-  .imgslot{margin-top:18px;border:1.5px dashed #34405a;border-radius:11px;min-height:118px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--ink-faint);font-family:var(--mono);font-size:12px;letter-spacing:.04em;background:repeating-linear-gradient(45deg,transparent,transparent 11px,rgba(255,255,255,.012) 11px,rgba(255,255,255,.012) 22px);padding:18px}
 
-  /* SKILLS */
   .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .skillcard{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:22px}
   .skillcard h4{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--hot-2);margin-bottom:15px}
@@ -111,15 +67,13 @@
   .skillcard li{font-size:14.5px;color:var(--ink-soft);padding:6px 0;border-bottom:1px solid rgba(35,44,58,.55)}
   .skillcard li:last-child{border-bottom:none}
 
-  /* EDU */
-  .edu-item{display:flex;gap:22px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .edu-item{display:flex;gap:22px;padding:17px 0;border-bottom:1px solid var(--line)}
   .edu-item:last-child{border-bottom:none}
   .edu-yr{font-family:var(--mono);font-size:12.5px;color:var(--hot);min-width:96px;padding-top:3px}
   .edu-deg{font-family:var(--disp);font-weight:600;font-size:17px}
   .edu-school{color:var(--ink-faint);font-size:13.5px;margin-top:3px}
 
-  /* FOOTER */
-  footer{padding:60px 0 70px;text-align:center}
+  footer{padding:58px 0 70px;text-align:center}
   footer .scale{max-width:240px;margin:0 auto 30px}
   footer h2{font-family:var(--disp);font-weight:700;font-size:clamp(26px,4vw,38px);letter-spacing:-.01em}
   footer p{color:var(--ink-soft);margin:16px auto 26px;max-width:480px}
@@ -129,25 +83,19 @@
   .btn:hover{transform:translateY(-2px);border-color:var(--hot)}
   .foot-note{margin-top:42px;font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.05em}
 
-  /* reveal */
   .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .rv.in{opacity:1;transform:none}
-
-  @media(max-width:760px){
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .skills{grid-template-columns:1fr}
-    .edu-item{flex-direction:column;gap:5px}
-  }
+  @media(max-width:760px){.skills{grid-template-columns:1fr}.edu-item{flex-direction:column;gap:5px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
-    <div class="eyebrow rv"><span class="scale"></span>Portfolio · Thermal · Fluids · Numerical Simulation</div>
+    <div class="eyebrow rv"><span class="scale"></span>Thermal · Fluids · Numerical Simulation</div>
     <h1 class="rv">Aiden<br><span class="lo">Azarnoush</span></h1>
-    <div class="role rv">Senior Thermal &amp; Fluids Analysis Engineer</div>
-    <p class="lede rv">I model, analyze, and validate the thermal behavior of high-energy hardware — turbine hot-sections, electronics, and the fluid networks that cool them — and I build the automation that makes that analysis faster and more repeatable.</p>
+    <div class="role rv">Thermal &amp; Fluids Analysis Engineer</div>
+    <p class="lede rv">I model, analyze, and validate the thermal and fluid behavior of high-energy hardware — turbine hot-sections, secondary air systems, and electronics — and build the tools that make that analysis faster and more repeatable.</p>
     <div class="chips rv">
       <span class="chip"><a href="mailto:mazarnou@purdue.edu">mazarnou@purdue.edu</a></span>
       <span class="chip">480-330-3498</span>
@@ -155,18 +103,11 @@
       <span class="chip"><a href="https://linkedin.com/in/aidenazar" target="_blank" rel="noopener">linkedin.com/in/aidenazar</a></span>
       <span class="chip badge">U.S. Citizen · Secret Clearance (Inactive, 2024)</span>
     </div>
-
     <div class="thermal-band rv" aria-hidden="true">
       <svg viewBox="0 0 1080 120" preserveAspectRatio="none" width="100%" height="120">
-        <defs>
-          <linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#5b8bff"/>
-            <stop offset="28%" stop-color="#34c8e6"/>
-            <stop offset="50%" stop-color="#7be0a4"/>
-            <stop offset="74%" stop-color="#ffb24a"/>
-            <stop offset="100%" stop-color="#ff7a3c"/>
-          </linearGradient>
-        </defs>
+        <defs><linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#5b8bff"/><stop offset="28%" stop-color="#34c8e6"/><stop offset="50%" stop-color="#7be0a4"/><stop offset="74%" stop-color="#ffb24a"/><stop offset="100%" stop-color="#ff7a3c"/>
+        </linearGradient></defs>
         <g fill="none" stroke="url(#tg)" stroke-width="1.4">
           <path d="M0,86 C180,52 320,108 520,70 C720,32 860,96 1080,58" opacity="0.85"/>
           <path d="M0,70 C180,38 320,92 520,56 C720,20 860,80 1080,44" opacity="0.55"/>
@@ -179,156 +120,127 @@
   </header>
 
   <section id="work">
-    <div class="sec-head rv">
-      <span class="sec-num">01</span>
-      <span class="sec-title">Selected Work</span>
-      <span class="sec-rule"></span>
+    <div class="sec-head rv"><span class="sec-num">01</span><span class="sec-title">Professional Experience</span><span class="sec-rule"></span></div>
+
+    <div class="company rv">
+      <div><div class="cname">Quest Defense Systems</div><div class="crole">Pratt &amp; Whitney Contractor · West Palm Beach, FL</div></div>
+      <div class="cmeta">Jul 2022 – Present</div>
     </div>
 
     <div class="proj rv">
-      <div class="proj-top">
-        <div>
-          <h3>HPT Secondary-Flow &amp; Clearance Thermal Analysis</h3>
-          <div class="org">Quest Defense Systems · Senior Mechanical Engineer</div>
-        </div>
-        <span class="pid">THERMAL</span>
-      </div>
-      <p>Perform thermal and secondary-flow analysis of high-pressure turbine hardware on nonconformance evaluations — assessing conduction, convection, and radiation heat transfer, and running rotor/stator clearance and thermal-gradient studies. Collaborate with cross-functional teams to support seal and knife-edge studies and engine-manual limit evaluations.</p>
-      <div class="tags"><span class="tag">ANSYS APDL</span><span class="tag">NX Simcenter 3D</span><span class="tag">FABL</span><span class="tag">BCON boundary conditions</span><span class="tag">Transient thermal</span></div>
+      <div class="proj-top"><h3>Secondary Flow, Clearance &amp; Thermal Analysis</h3><span class="pid">THERMAL</span></div>
+      <p>Secondary flow and thermal analysis of high-pressure turbine hardware on quality notifications (QNs) — clearance and thermal-gradient studies across conduction, convection, and radiation, supporting seal and knife-edge work and engine-manual limit evaluations.</p>
+      <div class="tags"><span class="tag">ANSYS APDL</span><span class="tag">NX Simcenter 3D</span><span class="tag">FABL</span><span class="tag">BCON</span><span class="tag">Transient thermal</span></div>
     </div>
 
     <div class="proj rv">
-      <div class="proj-top">
-        <div>
-          <h3>Automated MISES Cascade-Analysis Pipeline</h3>
-          <div class="org">Quest Defense Systems · Python Tooling</div>
-        </div>
-        <span class="pid">AUTOMATION</span>
-      </div>
-      <p>Built a Python wrapper around MIT MISES 2D cascade analysis that removed manual setup and post-processing from quality-nonconformance evaluations, lowering the engineering effort per case and standardizing outputs across the team.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">MISES</span><span class="tag">Workflow automation</span><span class="tag">2D cascade</span></div>
+      <div class="proj-top"><h3>RTP Tool</h3><span class="pid">STRUCTURAL</span></div>
+      <p>Built the RTP (Return-Through Tightness Parameter) tool to determine optimal tip-shroud configurations on PW4000 shrouded blades and disk sectors — running steady-stress, thermal, and modal analysis across operating conditions and evaluating thermal and modal allowances and margins for wear, creep, untwist, and tolerance.</p>
+      <div class="tags"><span class="tag">ANSYS APDL</span><span class="tag">Siemens NX</span><span class="tag">Steady Stress</span><span class="tag">Thermal</span><span class="tag">Modal</span><span class="tag">Thermal Allowances</span><span class="tag">Modal Allowances</span></div>
     </div>
 
     <div class="proj rv">
-      <div class="proj-top">
-        <div>
-          <h3>Airfoil Blending GUI Tool</h3>
-          <div class="org">Quest Defense Systems · Python Application</div>
-        </div>
-        <span class="pid">TOOLING</span>
-      </div>
-      <p>Developed a Python GUI supporting multiple airfoil blending methods — scallop blend, tip clip, and custom profiles — eliminating manual preprocessing and giving the team a repeatable, self-serve workflow.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">GUI</span><span class="tag">Geometry processing</span><span class="tag">Team tooling</span></div>
+      <div class="proj-top"><h3>MISES Cascade-Analysis Wrapper</h3><span class="pid">AERO</span></div>
+      <p>Python wrapper for MIT MISES 2D cascade analysis that prepares the required input files across spanwise sections (ISET grid setup, ISES inviscid and viscous solutions) and extracts the results — removing manual setup from QN evaluations and standardizing outputs across the team.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">MIT MISES</span><span class="tag">ISET / ISES input prep</span><span class="tag">Inviscid &amp; viscous</span><span class="tag">2D cascade</span></div>
     </div>
 
     <div class="proj rv">
-      <div class="proj-top">
-        <div>
-          <h3>Electronics Thermal Management &amp; 0-D/1-D Networks</h3>
-          <div class="org">McCormick Stevenson · Advanced Engineer</div>
-        </div>
-        <span class="pid">THERMAL · CFD</span>
-      </div>
-      <p>Performed thermal and CFD analysis of electronic assemblies — PCBs, batteries, RF components, CPUs — to predict temperature distributions and identify thermal risk across environments ranging from space vacuum to underwater. Built and validated 0-D/1-D thermal-network and first-order models for early trade studies, correlating reduced-order results against detailed CFD and analytical calculations, and identified improvement options such as heat sinks, heat pipes, TIMs, and PCB copper changes.</p>
-      <div class="tags"><span class="tag">ANSYS Fluent</span><span class="tag">ANSYS Icepak</span><span class="tag">0-D / 1-D thermal networks</span><span class="tag">Reduced-order modeling</span><span class="tag">Heat pipes · TIMs</span></div>
+      <div class="proj-top"><h3>LE/TE Blending Tool</h3><span class="pid">GEOMETRY</span></div>
+      <p>In-house LE/TE blending tool for turbine blade edges, later extended to surface blends. Supports multiple blend methods — sphere- and ellipsoid-based — with control over how deeply the blend penetrates toward the blade core, wrapped in a GUI for consistent, repeatable results across blade alloys.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">GUI</span><span class="tag">LE/TE blending</span><span class="tag">Surface blending</span><span class="tag">Sphere &amp; ellipsoid methods</span><span class="tag">Multi-alloy</span></div>
     </div>
 
     <div class="proj rv">
-      <div class="proj-top">
-        <div>
-          <h3>Tip-Shroud Structural Analysis</h3>
-          <div class="org">Quest Defense Systems · Mechanical Engineer</div>
-        </div>
-        <span class="pid">STRUCTURAL</span>
-      </div>
-      <p>Developed structural analysis tools to evaluate turbine tip-shroud configurations — assessing vibratory stress and safety margins against wear, creep, and untwist to support hardware decisions.</p>
-      <div class="tags"><span class="tag">FEA</span><span class="tag">Modal / vibration</span><span class="tag">Creep · fatigue</span><span class="tag">Margin analysis</span></div>
+      <div class="proj-top"><h3>Particle Ingestion Tool</h3><span class="pid">NUMERICAL</span></div>
+      <p>Enhanced a legacy Monte Carlo particle-ingestion tool, adding a kinetic-energy-based dirt-breakup model and increasing the particle count to improve simulation fidelity.</p>
+      <div class="tags"><span class="tag">FORTRAN</span><span class="tag">Monte Carlo</span><span class="tag">Dirt-breakup model</span><span class="tag">Particle ingestion</span></div>
+    </div>
+
+    <div class="company rv">
+      <div><div class="cname">McCormick Stevenson Corporation</div><div class="crole">Advanced Engineer · Clearwater, FL</div></div>
+      <div class="cmeta">Oct 2021 – Mar 2022</div>
     </div>
 
     <div class="proj rv">
-      <div class="proj-top">
-        <div>
-          <h3>High-Fidelity Particle-Ingestion Solver</h3>
-          <div class="org">Quest Defense Systems · FORTRAN</div>
-        </div>
-        <span class="pid">NUMERICAL</span>
-      </div>
-      <p>Enhanced a legacy FORTRAN particle-ingestion solver with a kinetic-energy-based dirt-breakup model, increasing physical fidelity for large particle-count simulations.</p>
-      <div class="tags"><span class="tag">FORTRAN</span><span class="tag">Particle dynamics</span><span class="tag">Legacy modernization</span></div>
+      <div class="proj-top"><h3>Electronic Chassis Thermal Analysis</h3><span class="pid">THERMAL</span></div>
+      <p>Thermal analysis of electronic chassis and housings for U.S. Army, Raytheon, and Boeing programs, at a fidelity set by the customer — from detailed PCB trace mapping that imports layers, vias, and copper distribution from ODB++ (ECAD) files, to hand-calculation estimates of in-plane vs. through-thickness board conductivity with junction-to-case and junction-to-board resistances.</p>
+      <div class="tags"><span class="tag">ANSYS Fluent</span><span class="tag">ANSYS Icepak</span><span class="tag">Hand Calculation</span><span class="tag">ODB++ / ECAD</span><span class="tag">Heat Pipes</span><span class="tag">TIMs</span></div>
+    </div>
+
+    <div class="company rv">
+      <div><div class="cname">Arizona State University</div><div class="crole">Research Assistant · Tempe, AZ</div></div>
+      <div class="cmeta">Jan 2014 – Mar 2015</div>
+    </div>
+
+    <div class="proj rv">
+      <div class="proj-top"><h3>Computational Materials Research</h3><span class="pid">RESEARCH</span></div>
+      <p>Developed a nonlinear finite-element C++ code for high-cycle fatigue crack propagation in brittle polycrystalline materials, and implemented an SVPN-based method in FORTRAN for microscopic yield (Peierls) stress in solder and pure titanium. Contributed to three peer-reviewed publications.</p>
+      <div class="tags"><span class="tag">C++</span><span class="tag">FORTRAN</span><span class="tag">Nonlinear FEA</span><span class="tag">Fatigue crack propagation</span><span class="tag">SVPN / Peierls stress</span></div>
     </div>
   </section>
 
   <section id="skills">
-    <div class="sec-head rv">
-      <span class="sec-num">02</span>
-      <span class="sec-title">Capabilities</span>
-      <span class="sec-rule"></span>
-    </div>
+    <div class="sec-head rv"><span class="sec-num">02</span><span class="sec-title">Core Competencies</span><span class="sec-rule"></span></div>
     <div class="skills">
       <div class="skillcard rv">
-        <h4>Analysis</h4>
+        <h4>Disciplines</h4>
         <ul>
-          <li>Thermal &amp; fluid analysis</li>
-          <li>0-D / 1-D thermal-fluid networks</li>
-          <li>Heat transfer — conduction, convection, radiation</li>
-          <li>Reduced-order &amp; first-principles modeling</li>
-          <li>FEA &amp; thermal-mechanical analysis</li>
-          <li>CFD &amp; secondary air systems</li>
+          <li>Thermal &amp; Fluid Analysis</li>
+          <li>Heat Transfer</li>
+          <li>FEA</li>
+          <li>Thermal-Mechanical</li>
+          <li>CFD</li>
+          <li>Secondary Flow Analysis</li>
         </ul>
       </div>
       <div class="skillcard rv">
         <h4>Software</h4>
         <ul>
-          <li>ANSYS — Workbench, APDL</li>
-          <li>ANSYS — Fluent, CFX, Icepak</li>
+          <li>ANSYS Workbench, APDL</li>
+          <li>ANSYS Fluent, CFX, Icepak</li>
+          <li>NX CAD</li>
           <li>NX Simcenter 3D</li>
-          <li>Abaqus</li>
-          <li>NX CAD · SolidWorks</li>
+          <li>Abaqus, SolidWorks</li>
         </ul>
       </div>
       <div class="skillcard rv">
-        <h4>Programming &amp; Automation</h4>
+        <h4>Programming Languages</h4>
         <ul>
           <li>Python</li>
           <li>MATLAB</li>
-          <li>C++</li>
-          <li>FORTRAN</li>
-          <li>Julia · Perl</li>
+          <li>C / C++</li>
+          <li>FORTRAN 90/95</li>
+          <li>Julia</li>
+          <li>Perl</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="edu">
-    <div class="sec-head rv">
-      <span class="sec-num">03</span>
-      <span class="sec-title">Education</span>
-      <span class="sec-rule"></span>
-    </div>
+    <div class="sec-head rv"><span class="sec-num">03</span><span class="sec-title">Education</span><span class="sec-rule"></span></div>
     <div class="rv">
-      <div class="edu-item">
-        <div class="edu-yr">2022–2025</div>
-        <div><div class="edu-deg">M.S., Mechanical Engineering</div><div class="edu-school">Purdue University — focus: fluid mechanics &amp; machine learning</div></div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-yr">2013–2016</div>
-        <div><div class="edu-deg">M.S., Mechanical Engineering</div><div class="edu-school">University of South Florida</div></div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-yr">2010–2012</div>
-        <div><div class="edu-deg">M.S., Metal Forming</div><div class="edu-school">Sharif University of Technology</div></div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-yr">2006–2010</div>
-        <div><div class="edu-deg">B.S., Materials Science &amp; Engineering</div><div class="edu-school">Sharif University of Technology</div></div>
-      </div>
+      <div class="edu-item"><div class="edu-yr">2022–2025</div><div><div class="edu-deg">M.S., Mechanical Engineering</div><div class="edu-school">Purdue University — focus: computational fluid mechanics &amp; machine learning</div></div></div>
+      <div class="edu-item"><div class="edu-yr">2013–2016</div><div><div class="edu-deg">M.S., Mechanical Engineering</div><div class="edu-school">University of South Florida — focus: computational solid mechanics</div></div></div>
+      <div class="edu-item"><div class="edu-yr">2010–2012</div><div><div class="edu-deg">M.S., Metal Forming</div><div class="edu-school">Sharif University of Technology</div></div></div>
+      <div class="edu-item"><div class="edu-yr">2006–2010</div><div><div class="edu-deg">B.S., Materials Science &amp; Engineering</div><div class="edu-school">Sharif University of Technology</div></div></div>
+    </div>
+  </section>
+
+  <section id="pubs">
+    <div class="sec-head rv"><span class="sec-num">04</span><span class="sec-title">Publications</span><span class="sec-rule"></span></div>
+    <div class="rv">
+      <div class="edu-item"><div class="edu-yr">2017</div><div><div class="edu-deg">Dislocation Core Properties of &beta;-tin: A First-Principles Study</div><div class="edu-school">Bhatia, <strong>Azarnoush</strong>, Adlakha, Lu, Solanki · Modelling and Simulation in Materials Science and Engineering, 25(2)</div></div></div>
+      <div class="edu-item"><div class="edu-yr">2015</div><div><div class="edu-deg">A First-Principles Investigation of Dislocation Core Properties of &beta;-tin</div><div class="edu-school"><strong>Azarnoush</strong>, Bhatia, Lu, Solanki · Proceedings of the TMS, Orlando, FL</div></div></div>
+      <div class="edu-item"><div class="edu-yr">2015</div><div><div class="edu-deg">Effect of Oxygen on Prismatic Faults in &alpha;-Ti: A Combined QM/MM Study</div><div class="edu-school">Bhatia, Zhang, <strong>Azarnoush</strong>, Lu, Solanki · Scripta Materialia, 98, 32–35</div></div></div>
     </div>
   </section>
 
   <footer>
     <div class="scale"></div>
     <h2>Let's talk thermal.</h2>
-    <p>Open to senior thermal &amp; fluids analysis roles in aerospace, defense, and energy.</p>
+    <p>Open to thermal &amp; fluids analysis roles in aerospace, defense, and energy.</p>
     <div class="cta">
       <a class="btn solid" href="mailto:mazarnou@purdue.edu">mazarnou@purdue.edu</a>
       <a class="btn" href="https://linkedin.com/in/aidenazar" target="_blank" rel="noopener">LinkedIn</a>
@@ -338,7 +250,6 @@
   </footer>
 
 </div>
-
 <script>
   const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.12});
   document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,6)*55)+'ms';obs.observe(el);});
